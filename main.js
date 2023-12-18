@@ -19,7 +19,7 @@ app.use('/', imageRouter);
 app.listen(port);
 
 const connect = () => {
-  console.log(`App is listening at http://localhost:${port}`);
+  console.log(`App kaki is listening at http://localhost:${port}`);
 };
 
 connect();
