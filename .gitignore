@@ -1,4 +1,4 @@
-/uploaded_images/
-/bg_removed_images/
+# /uploaded_images/
+# /bg_removed_images/
 /node_modules/
 .env
