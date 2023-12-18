@@ -14,6 +14,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(cors());
 app.use(fileUpload());
 
 app.use(express.static('uploaded_images')); // Make the folder public, that the client side can use it
