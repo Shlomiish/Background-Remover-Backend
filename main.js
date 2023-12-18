@@ -8,7 +8,10 @@ const port = process.env.PORT || 3000; // Use a default port if process.env.PORT
 
 app.use(
   cors({
-    origin: ['https://photobox-background-remover-api-yjog.onrender.com'],
+    origin: [
+      `http://localhost:${port}`,
+      'https://photobox-background-remover-api-yjog.onrender.com',
+    ],
   })
 );
 app.use(fileUpload());
