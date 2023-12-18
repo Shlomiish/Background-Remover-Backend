@@ -3,8 +3,11 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
 
+const http = require('http');
+
 const app = express();
-const port = process.env.PORT;
+const PORT = process.env.PORT;
+const server = http.createServer(app);
 
 app.use(cors());
 app.use(fileUpload());
@@ -16,10 +19,8 @@ app.use(express.static('bg_color_images')); // Make the folder public, that the 
 const imageRouter = require('./routers/imageRouter');
 app.use('/', imageRouter);
 
-app.listen(port);
+app.listen(PORT);
 
-const connect = () => {
-  console.log(`App kaki is listening at http://localhost:${port}`);
-};
-
-connect();
+server.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
