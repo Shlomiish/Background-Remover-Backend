@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
-const http = require('http');
 require('dotenv').config();
 
 const app = express();
@@ -17,8 +16,7 @@ app.use(express.static('bg_color_images')); // Make the folder public, that the 
 const imageRouter = require('./routers/imageRouter');
 app.use('/', imageRouter);
 
-const server = http.createServer(app);
-server.listen(port);
+app.listen(port);
 
 const connect = () => {
   console.log(`App is listening at http://localhost:${port}`);
