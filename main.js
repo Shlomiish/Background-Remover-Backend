@@ -6,21 +6,21 @@ require('dotenv').config();
 const http = require('http');
 
 const app = express();
-const PORT = process.env.PORT;
-const server = http.createServer(app);
+const port = process.env.PORT;
 
 app.use(cors());
 app.use(fileUpload());
 
 app.use(express.static('uploaded_images')); // Make the folder public, that the client side can use it
 app.use(express.static('bg_removed_images')); // Make the folder public, that the client side can use it
-app.use(express.static('bg_color_images')); // Make the folder public, that the client side can use it
 
 const imageRouter = require('./routers/imageRouter');
 app.use('/', imageRouter);
 
-app.listen(PORT);
+app.listen(port);
 
-server.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+const server = http.createServer(app);
+
+server.listen(() => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
