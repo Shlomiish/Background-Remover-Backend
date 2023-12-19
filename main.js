@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
   res.send(`Running on Render: ${isRenderEnvironment}`);
 });
 
+app.post('/', (req, res) => {
+  res.send('kaki kaki kaki');
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
