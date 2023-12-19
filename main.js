@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
   res.send(`Running on Render: ${isRenderEnvironment}`);
 });
 
-app.post('/', (req, res) => {
+app.post('/upload_image', (req, res) => {
   res.send('kaki kaki kaki');
 });
 
