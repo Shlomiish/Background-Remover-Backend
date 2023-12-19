@@ -6,14 +6,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000; // Use a default port if process.env.PORT is not set
 
-app.use(
-  cors({
-    origin: [
-      `http://localhost:${port}`,
-      'https://photobox-background-remover-api-yjog.onrender.com',
-    ],
-  })
-);
+app.use(cors());
 app.use(fileUpload());
 
 app.use(express.static('uploaded_images')); // Make the folder public, that the client side can use it
