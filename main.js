@@ -15,8 +15,12 @@ app.use(express.static('bg_removed_images')); // Make the folder public, that th
 const imageRouter = require('./routers/imageRouter');
 app.use('/', imageRouter);
 
-app.listen(port);
+const isRenderEnvironment = process.env.RENDER === 'true';
 
-app.listen(() => {
+app.get('/', (req, res) => {
+  res.send(`Running on Render: ${isRenderEnvironment}`);
+});
+
+app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
