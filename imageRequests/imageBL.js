@@ -1,6 +1,7 @@
 const removeBgFunc = require('../middleware/removeBgFunc');
 
 const upload_image = async (req, res) => {
+  console.log('test');
   let imageFile = req.files.uploadedFile;
   if (imageFile.mimetype === 'image/jpeg' || imageFile.mimetype === 'image/png') {
     try {
