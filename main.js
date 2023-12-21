@@ -41,6 +41,7 @@ app.post('/test', (req, res) => {
         } else {
           removeBgFunc(fileNameAndUploadedTime);
           res.status(201).send(fileNameAndUploadedTime);
+          console.log('test5');
         }
       });
     } catch (error) {
