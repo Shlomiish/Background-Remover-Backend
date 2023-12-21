@@ -40,7 +40,7 @@ app.post('/test', (req, res) => {
 
       imageFile.mv(`${__dirname}/./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
         console.log('test4');
-        console.log(__dirname);
+        console.log('kaki', __dirname);
 
         if (err) {
           res.status(400).send(err);
