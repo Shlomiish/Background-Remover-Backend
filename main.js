@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.post('/test', (req, res) => {
   console.log('test');
+  res.send('fuck');
 });
 
 app.listen(port, () => {
