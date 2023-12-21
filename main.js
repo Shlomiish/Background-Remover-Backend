@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
-const removeBgFunc = require('./middleware/removeBgFunc');
+//const removeBgFunc = require('./middleware/removeBgFunc');
 const app = express();
 const port = process.env.PORT || 3000; // Use a default port if process.env.PORT is not set
 
@@ -33,7 +33,7 @@ app.post('/test', (req, res) => {
       newImageType = imageFile.name.replace('.jpg', '.png');
       let fileNameAndUploadedTime = time + '_' + newImageType;
 
-      imageFile.mv(`./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
+      imageFile.mv(`${__dirname}/./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
         console.log('test4');
         console.log(__dirname);
 
@@ -41,7 +41,6 @@ app.post('/test', (req, res) => {
           res.status(400).send(err);
           console.log('test5');
         } else {
-          console.log('test6');
           // removeBgFunc(fileNameAndUploadedTime);
           res.status(201).send(fileNameAndUploadedTime);
         }
