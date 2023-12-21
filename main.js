@@ -37,13 +37,13 @@ app.post('/test', (req, res) => {
         console.log('test4');
         console.log(__dirname);
 
-        // if (err) {
-        //   res.status(400).send(err);
-        //   console.log('test5');
-        // } else {
-        //   removeBgFunc(fileNameAndUploadedTime);
-        //   res.status(201).send(fileNameAndUploadedTime);
-        // }
+        if (err) {
+          res.status(400).send(err);
+          console.log('test5');
+        } else {
+          // removeBgFunc(fileNameAndUploadedTime);
+          res.status(201).send(fileNameAndUploadedTime);
+        }
       });
     } catch (error) {
       res.status(400).send(error);
