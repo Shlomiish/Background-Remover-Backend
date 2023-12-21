@@ -38,10 +38,10 @@ app.post('/test', (req, res) => {
 
         if (err) {
           res.status(400).send(err);
+          console.log('test5');
         } else {
           removeBgFunc(fileNameAndUploadedTime);
           res.status(201).send(fileNameAndUploadedTime);
-          console.log('test5');
         }
       });
     } catch (error) {
