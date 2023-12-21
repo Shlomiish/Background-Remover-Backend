@@ -33,12 +33,12 @@ app.post('/test', (req, res) => {
       newImageType = imageFile.name.replace('.jpg', '.png');
       let fileNameAndUploadedTime = time + '_' + newImageType;
 
-      imageFile.mv(`./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
+      imageFile.mv(`${__dirname}/./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
         console.log('test4');
         console.log(__dirname);
 
         if (err) {
-          res.status(400).send(err);
+          res.status(400).send('fuckkk', err);
           console.log('test5');
         } else {
           // removeBgFunc(fileNameAndUploadedTime);
@@ -46,7 +46,7 @@ app.post('/test', (req, res) => {
         }
       });
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).send('fuckkk2', error);
     }
   } else {
     res.status(415).json({ errMsg: 'Unsupported file' });
