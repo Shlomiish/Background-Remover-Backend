@@ -26,12 +26,16 @@ app.post('/test', (req, res) => {
   console.log('test');
   let imageFile = req.files.uploadedFile;
   if (imageFile.mimetype === 'image/jpeg' || imageFile.mimetype === 'image/png') {
+    console.log('test2');
     try {
+      console.log('test3');
       let time = new Date().getTime();
       newImageType = imageFile.name.replace('.jpg', '.png');
       let fileNameAndUploadedTime = time + '_' + newImageType;
 
       imageFile.mv(`${__dirname}/./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
+        console.log('test4');
+
         if (err) {
           res.status(400).send(err);
         } else {
