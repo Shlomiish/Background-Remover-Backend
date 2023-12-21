@@ -28,7 +28,7 @@ app.post('/test', (req, res) => {
     newImageType = imageFile.name.replace('.jpg', '.png');
     let fileNameAndUploadedTime = time + '_' + newImageType;
     res.send(fileNameAndUploadedTime);
-    imageFile.mv(`${__dirname}`, (err) => {
+    imageFile.mv(`${__dirname}/myapp`, (err) => {
       if (err) {
         res.status(400).send(err);
       } else {
