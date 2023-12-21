@@ -23,8 +23,12 @@ app.get('/', (req, res) => {
 
 app.post('/test', (req, res) => {
   let imageFile = req.files.uploadedFile;
-  console.log('test');
-  res.send(imageFile);
+  if (imageFile.mimetype === 'image/jpeg' || imageFile.mimetype === 'image/png') {
+    let time = new Date().getTime();
+    newImageType = imageFile.name.replace('.jpg', '.png');
+    let fileNameAndUploadedTime = time + '_' + newImageType;
+    res.send(fileNameAndUploadedTime);
+  }
 });
 
 app.listen(port, () => {
