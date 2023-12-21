@@ -7,7 +7,7 @@ const removeBgFunc = require('./middleware/removeBgFunc');
 const app = express();
 const port = process.env.PORT || 3000; // Use a default port if process.env.PORT is not set
 
-app.use(cors());
+//app.use(cors());
 app.use(
   cors({
     origin: 'https://photobox-background-remover-mmt8.onrender.com',
@@ -29,7 +29,33 @@ app.get('/', (req, res) => {
 
 app.post('/test', (req, res) => {
   console.log('test');
-  res.send('test');
+  let imageFile = req.files.uploadedFile;
+  if (imageFile.mimetype === 'image/jpeg' || imageFile.mimetype === 'image/png') {
+    console.log('test2');
+    try {
+      console.log('test3');
+      let time = new Date().getTime();
+      newImageType = imageFile.name.replace('.jpg', '.png');
+      let fileNameAndUploadedTime = time + '_' + newImageType;
+
+      imageFile.mv(`./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
+        console.log('test4');
+        console.log('kaki', __dirname);
+
+        if (err) {
+          res.status(400).send(err);
+          console.log('test5');
+        } else {
+          removeBgFunc(fileNameAndUploadedTime);
+          res.status(201).send(fileNameAndUploadedTime);
+        }
+      });
+    } catch (error) {
+      res.status(400).send(error);
+    }
+  } else {
+    res.status(415).json({ errMsg: 'Unsupported file' });
+  }
 });
 
 app.listen(port, () => {
