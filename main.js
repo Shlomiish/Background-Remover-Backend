@@ -24,33 +24,6 @@ app.get('/', (req, res) => {
 
 app.post('/test', (req, res) => {
   console.log('test');
-  let imageFile = req.files.uploadedFile;
-  if (imageFile.mimetype === 'image/jpeg' || imageFile.mimetype === 'image/png') {
-    console.log('test2');
-    try {
-      console.log('test3');
-      let time = new Date().getTime();
-      newImageType = imageFile.name.replace('.jpg', '.png');
-      let fileNameAndUploadedTime = time + '_' + newImageType;
-
-      imageFile.mv(`${__dirname}/./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
-        console.log('test4');
-        console.log(__dirname);
-
-        if (err) {
-          res.status(400).send('fuckkk', err);
-          console.log('test5');
-        } else {
-          // removeBgFunc(fileNameAndUploadedTime);
-          res.status(201).send(fileNameAndUploadedTime);
-        }
-      });
-    } catch (error) {
-      res.status(400).send('fuckkk2', error);
-    }
-  } else {
-    res.status(415).json({ errMsg: 'Unsupported file' });
-  }
 });
 
 app.listen(port, () => {
