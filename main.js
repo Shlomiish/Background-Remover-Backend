@@ -3,19 +3,11 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
 const removeBgFunc = require('./middleware/removeBgFunc');
-
 const app = express();
 const port = process.env.PORT || 3000; // Use a default port if process.env.PORT is not set
 
-//app.use(cors());
-app.use(
-  cors({
-    origin: 'https://photobox-background-remover-mmt8.onrender.com',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Your-Custom-Header'],
-    optionsSuccessStatus: 204,
-  })
-);
+app.use(cors());
+
 app.use(fileUpload());
 
 app.use(express.static('uploaded_images')); // Make the folder public, that the client side can use it
@@ -41,17 +33,17 @@ app.post('/test', (req, res) => {
       newImageType = imageFile.name.replace('.jpg', '.png');
       let fileNameAndUploadedTime = time + '_' + newImageType;
 
-      imageFile.mv(`./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
+      imageFile.mv(`${__dirname}/./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
         console.log('test4');
-        console.log('kaki', __dirname);
+        console.log(__dirname);
 
-        if (err) {
-          res.status(400).send(err);
-          console.log('test5');
-        } else {
-          removeBgFunc(fileNameAndUploadedTime);
-          res.status(201).send(fileNameAndUploadedTime);
-        }
+        // if (err) {
+        //   res.status(400).send(err);
+        //   console.log('test5');
+        // } else {
+        //   removeBgFunc(fileNameAndUploadedTime);
+        //   res.status(201).send(fileNameAndUploadedTime);
+        // }
       });
     } catch (error) {
       res.status(400).send(error);
