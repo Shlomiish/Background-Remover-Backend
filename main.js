@@ -43,7 +43,7 @@ app.post('/test', (req, res) => {
           console.log('test5');
         } else {
           console.log('test6');
-          removeBgFunc(fileNameAndUploadedTime);
+          //removeBgFunc(fileNameAndUploadedTime);
           res.status(201).send(fileNameAndUploadedTime);
         }
       });
