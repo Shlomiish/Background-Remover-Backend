@@ -22,8 +22,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/test', (req, res) => {
+  let imageFile = req.files.uploadedFile;
   console.log('test');
-  res.send('kaki');
+  res.send(imageFile);
 });
 
 app.listen(port, () => {
