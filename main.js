@@ -8,6 +8,11 @@ const app = express();
 const port = process.env.PORT || 3000; // Use a default port if process.env.PORT is not set
 
 app.use(cors());
+app.use(
+  cors({
+    origin: 'https://photobox-background-remover-mmt8.onrender.com',
+  })
+);
 app.use(fileUpload());
 
 app.use(express.static('uploaded_images')); // Make the folder public, that the client side can use it
