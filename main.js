@@ -11,7 +11,9 @@ const port = process.env.PORT || 3000; // Use a default port if process.env.PORT
 app.use(
   cors({
     origin: 'https://photobox-background-remover-mmt8.onrender.com',
-    exposedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Your-Custom-Header'],
+    optionsSuccessStatus: 204,
   })
 );
 app.use(fileUpload());
