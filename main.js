@@ -3,7 +3,6 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
 const removeBgFunc = require('./middleware/removeBgFunc');
-
 const app = express();
 const port = process.env.PORT || 3000; // Use a default port if process.env.PORT is not set
 
@@ -43,7 +42,7 @@ app.post('/test', (req, res) => {
           console.log('test5');
         } else {
           console.log('test6');
-          //removeBgFunc(fileNameAndUploadedTime);
+          // removeBgFunc(fileNameAndUploadedTime);
           res.status(201).send(fileNameAndUploadedTime);
         }
       });
