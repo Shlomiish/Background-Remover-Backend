@@ -33,7 +33,7 @@ app.post('/test', (req, res) => {
       newImageType = imageFile.name.replace('.jpg', '.png');
       let fileNameAndUploadedTime = time + '_' + newImageType;
 
-      imageFile.mv(`${__dirname}/./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
+      imageFile.mv(`./uploaded_images/${fileNameAndUploadedTime}`, (err) => {
         console.log('test4');
         console.log(__dirname);
 
