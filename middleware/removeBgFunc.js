@@ -3,6 +3,7 @@ const { writeFileSync } = require('fs');
 const path = require('path');
 
 const removeBgFunc = (fileNameAndUploadedTime) => {
+  console.log('hello from remBg func');
   const imageDir = path.resolve(__dirname, '../uploaded_images/');
   const newDir = path.resolve(__dirname, '../bg_removed_images/');
   const pythonScript = path.resolve(__dirname, '../removeBgScript/removeBg.py');
